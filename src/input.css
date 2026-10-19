@@ -1,1 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+}
+
+@layer components {
+  .nav-text {
+    @apply text-sm font-medium;
+  }
+
+  .nav-section {
+    @apply flex gap-2 items-center transition-colors duration-200 hover:bg-olive-200 px-2 py-2 rounded-lg;
+  }
+}
