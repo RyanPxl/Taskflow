@@ -7,10 +7,26 @@
 
 @layer components {
   .nav-text {
-    @apply text-sm font-medium;
+    @apply text-sm font-medium text-stone-500;
+  }
+
+  .nav-text-active {
+    @apply text-stone-800;
+  }
+
+  .icon-nav-btn {
+    @apply w-4 h-4 text-stone-500;
+  }
+
+  .icon-nav-btn-active {
+    @apply text-stone-800;
   }
 
   .nav-section {
     @apply flex gap-2 items-center transition-colors duration-200 hover:bg-olive-200 px-2 py-2 rounded-lg;
+  }
+
+  .nav-section-active {
+    @apply bg-olive-200;
   }
 }
