@@ -263,19 +263,26 @@
         </header>
 
         <main class="flex-1 overflow-y-auto px-8 py-8 bg-[#FAF9F6]">
-          <div>
-            <div>
-              <h1>Good Morning, (user)👋</h1>
-              <div>Mon, Oct 5</div>
+          <div class="flex items-start justify-between text-stone-500">
+            <div class="flex flex-col gap-2">
+              <h1 class="text-xl">
+                <span class="font-bold text-black">Good morning,</span> User 👋
+              </h1>
+              <p class="text-xs">Here's what's on your plate today.</p>
             </div>
-            <p>Here's what's on your plate today.</p>
+            <div
+              id="current-date"
+              class="text-xs tracking-wider bg-white px-2 py-1 rounded-xl border-[0.5px] border-stone-300"
+            >
+              Mon, Oct 5
+            </div>
           </div>
 
-          <section>
+          <section class="py-8">
             <h2 class="sr-only">Task Overview</h2>
-            <ul>
-              <li>
-                <div>
+            <ul class="grid grid-cols-4 gap-4">
+              <li class="card-overview">
+                <div class="flex items-center gap-2 text-sm">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -295,12 +302,12 @@
                   <span>Total Task</span>
                 </div>
 
-                <span>5</span>
-                <p>All time</p>
+                <div class="card-num">5</div>
+                <p class="text-xs tracking-widest">All time</p>
               </li>
 
-              <li>
-                <div>
+              <li class="card-overview">
+                <div class="flex items-center gap-2 text-sm">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -317,16 +324,18 @@
                   <span>Completed</span>
                 </div>
 
-                <span>1</span>
+                <div class="card-num">1</div>
 
-                <div>
+                <div
+                  class="flex text-xs items-center tracking-widest gap-1 text-green-700"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
                     stroke="currentColor"
-                    class="w-4 h-4"
+                    class="size-3"
                     aria-hidden="true"
                   >
                     <path
@@ -336,13 +345,13 @@
                     />
                   </svg>
 
-                  <span>0</span>
+                  <div>0</div>
                   <span>today</span>
                 </div>
               </li>
 
-              <li>
-                <div>
+              <li class="card-overview">
+                <div class="flex items-center gap-2 text-sm">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -362,12 +371,12 @@
                   <span>Pending</span>
                 </div>
 
-                <span>4</span>
-                <p>Active tasks</p>
+                <div class="card-num">4</div>
+                <p class="text-xs tracking-widest">Active tasks</p>
               </li>
 
-              <li>
-                <div>
+              <li class="card-overview">
+                <div class="flex items-center gap-2 text-sm">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -387,24 +396,35 @@
                   <span>Productivity</span>
                 </div>
 
-                <span>20%</span>
-
+                <div class="card-num">20%</div>
                 <progress value="20" max="100"></progress>
               </li>
             </ul>
           </section>
 
-          <div>
-            <div>
-              <div>
-                <div>
-                  <h2>Tasks</h2>
-                  <span>5</span>
+          <div class="bg-white py-5 border-[0.5px] border-stone-300 rounded-xl">
+            <div class="flex flex-col px-5">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <h2 class="text-base font-bold">Tasks</h2>
+                  <div
+                    class="flex justify-center items-center size-6 text-xs bg-stone-100 text-stone-500 rounded-full border-stone-300 border-[0.5px]"
+                  >
+                    5
+                  </div>
                 </div>
 
-                <div>
-                  <button>Clear done</button>
-                  <button>
+                <div class="flex gap-4 items-center">
+                  <button
+                    type="button"
+                    class="text-xs p-1.5 hover:bg-stone-200 rounded-lg cursor-pointer text-stone-500"
+                  >
+                    Clear done
+                  </button>
+                  <button
+                    type="button"
+                    class="flex gap-1 p-1.5 text-xs items-center rounded-lg text-stone-500 hover:text-black border-stone-300 border-[0.5px] cursor-pointer"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -426,20 +446,30 @@
                 </div>
               </div>
 
-              <form>
+              <form class="flex items-center gap-2 py-4">
                 <label class="sr-only" for="new-tasks">Add a new task</label>
                 <input
                   id="new-tasks"
                   type="text"
                   placeholder="Add a new task..."
+                  class="bg-olive-100 border-[0.5px] border-stone-300 px-3 py-2 text-sm rounded-lg flex-1 outline-none focus:bg-white"
                 />
-                <select>
-                  <option value="">Medium</option>
-                  <option value="">High</option>
-                  <option value="">Low</option>
+                <select
+                  class="shrink-0 bg-olive-100 border-[0.5px] border-stone-300 py-2 px-2 text-sm rounded-lg outline-none text-stone-500 cursor-pointer"
+                >
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                  <option value="Low">Low</option>
                 </select>
-                <input type="date" aria-label="Due date" />
-                <button type="submit">
+                <input
+                  type="date"
+                  aria-label="Due date"
+                  class="shrink-0 bg-olive-100 border-[0.5px] border-stone-300 px-2 py-2 rounded-lg text-sm text-stone-500 cursor-pointer"
+                />
+                <button
+                  type="submit"
+                  class="shrink-0 flex items-center gap-1 bg-stone-900 px-3 py-2 text-white font-medium text-sm rounded-lg tracking-wide cursor-pointer"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -461,284 +491,232 @@
               </form>
             </div>
 
-            <div>
-              <div>
-                <!-- filter button -->
-                <button>All</button>
-                <button>Active</button>
-                <button>Completed</button>
-              </div>
+            <div class="flex py-3 px-5 border-y-[0.5px] border-stone-300 gap-2">
+              <button class="filter-btn filter-btn-active">All</button>
+              <button class="filter-btn">Active</button>
+              <button class="filter-btn">Completed</button>
             </div>
 
-            <div>
-              <div>
-                <ul>
-                  <!-- example task that overdue already -->
-                  <li>
-                    <div>
+            <div class="px-3 py-2">
+              <ul id="task-list" class="flex flex-col gap-1">
+                <!-- example task that overdue already -->
+                <li class="task-item group">
+                  <div class="shrink-0 flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-4 h-4"
+                      aria-label="Dragable"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
+                      />
+                    </svg>
+                  </div>
+
+                  <div class="shrink-0 flex items-center">
+                    <input
+                      type="checkbox"
+                      aria-label="task-checked"
+                      class="size-4.5 accent-black"
+                    />
+                  </div>
+
+                  <div class="flex-1 flex flex-col gap-1">
+                    <h3 class="text-sm font-medium tracking-wide">
+                      Design system audit for S1
+                    </h3>
+                    <div class="task-detail">
+                      <div class="date-task-overdue">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="size-3"
+                          aria-hidden="true"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
+                          />
+                        </svg>
+                        <div class="pt-0.5 tracking-widest">
+                          May 28 · Overdue
+                        </div>
+                      </div>
+
+                      <p class="task-category-high">High</p>
+                    </div>
+                  </div>
+
+                  <div class="shrink-0 flex items-center gap-1">
+                    <button
+                      type="button"
+                      aria-label="Edit"
+                      class="edit-task-btn"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
                         stroke="currentColor"
-                        class="w-4 h-4"
-                        aria-label="Dragable"
+                        class="size-3"
+                        aria-hidden="true"
                       >
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
+                          d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
                         />
                       </svg>
-
-                      <input type="checkbox" aria-label="task-checked" />
-
-                      <div>
-                        <span>Example Task 1</span>
-                        <div>
-                          <div>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke-width="1.5"
-                              stroke="currentColor"
-                              class="w-2 h-2"
-                              aria-hidden="true"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
-                              />
-                            </svg>
-                            <span>May 28 · Overdue</span>
-                          </div>
-
-                          <span>High</span>
-                        </div>
-                      </div>
-
-                      <div>
-                        <button type="button" aria-label="Edit">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="w-4 h-4"
-                            aria-hidden="true"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
-                            />
-                          </svg>
-                        </button>
-                        <button type="button" aria-label="Delete">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="w-4 h-4"
-                            aria-hidden="true"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M6 18 18 6M6 6l12 12"
-                            />
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                  </li>
-
-                  <!-- example task that wasn't overdue yet -->
-                  <li>
-                    <div>
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Delete"
+                      class="delete-task-btn"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
                         stroke="currentColor"
-                        class="w-4 h-4"
-                        aria-label="Dragable"
+                        class="size-3"
+                        aria-hidden="true"
                       >
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
+                          d="M6 18 18 6M6 6l12 12"
                         />
                       </svg>
+                    </button>
+                  </div>
+                </li>
 
-                      <input type="checkbox" aria-label="task-checked" />
+                <!-- example task that wasn't overdue yet -->
+                <li class="task-item group">
+                  <div class="shrink-0 flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-4 h-4"
+                      aria-label="Dragable"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
+                      />
+                    </svg>
+                  </div>
 
-                      <div>
-                        <span>Example Task 2</span>
-                        <div>
-                          <div>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke-width="1.5"
-                              stroke="currentColor"
-                              class="w-2 h-2"
-                              aria-hidden="true"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
-                              />
-                            </svg>
-                            <span>Nov 28</span>
-                          </div>
+                  <div class="shrink-0 flex items-center">
+                    <input
+                      type="checkbox"
+                      aria-label="task-checked"
+                      class="size-4.5 accent-black"
+                    />
+                  </div>
 
-                          <span>Medium</span>
-                        </div>
+                  <div class="flex-1 flex flex-col gap-1">
+                    <h3 class="text-sm font-medium tracking-wide">
+                      Review auth request - auto model
+                    </h3>
+                    <div class="task-detail">
+                      <div class="date-task">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="w-2 h-2"
+                          aria-hidden="true"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
+                          />
+                        </svg>
+                        <div>Nov 28</div>
                       </div>
 
-                      <div>
-                        <button type="button" aria-label="Edit">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="w-4 h-4"
-                            aria-hidden="true"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
-                            />
-                          </svg>
-                        </button>
-                        <button type="button" aria-label="Delete">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="w-4 h-4"
-                            aria-hidden="true"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M6 18 18 6M6 6l12 12"
-                            />
-                          </svg>
-                        </button>
-                      </div>
+                      <p class="task-category-medium">Medium</p>
                     </div>
-                  </li>
+                  </div>
 
-                  <li>
-                    <div>
+                  <div class="shrink-0 flex items-center gap-1">
+                    <button
+                      type="button"
+                      aria-label="Edit"
+                      class="edit-task-btn"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
                         stroke="currentColor"
-                        class="w-4 h-4"
-                        aria-label="Dragable"
+                        class="size-3"
+                        aria-hidden="true"
                       >
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
+                          d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
                         />
                       </svg>
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Delete"
+                      class="delete-task-btn"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="size-3"
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M6 18 18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </li>
+              </ul>
 
-                      <input type="checkbox" aria-label="task-checked" />
-
-                      <div>
-                        <span>Example Task 3</span>
-                        <div>
-                          <div>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke-width="1.5"
-                              stroke="currentColor"
-                              class="w-2 h-2"
-                              aria-hidden="true"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
-                              />
-                            </svg>
-                            <span>Nov 28</span>
-                          </div>
-
-                          <span>Low</span>
-                        </div>
-                      </div>
-
-                      <div>
-                        <button type="button" aria-label="Edit">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="w-4 h-4"
-                            aria-hidden="true"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
-                            />
-                          </svg>
-                        </button>
-                        <button type="button" aria-label="Delete">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="w-4 h-4"
-                            aria-hidden="true"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M6 18 18 6M6 6l12 12"
-                            />
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
+              <div
+                class="flex items-center gap-3 after:h-px after:flex-1 after:bg-stone-300 after:content-[''] px-3 py-3 text-xs text-stone-500 uppercase font-bold tracking-wider"
+              >
+                <h4>completed</h4>
               </div>
-
-              <h3>COMPLETED</h3>
 
               <div>
                 <ul>
                   <!-- example task that already completed -->
-                  <li>
-                    <div>
+                  <li class="task-item group">
+                    <div class="shrink-0 flex items-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -754,72 +732,87 @@
                           d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z"
                         />
                       </svg>
+                    </div>
 
-                      <input type="checkbox" aria-label="task-checked" />
+                    <div class="shrink-0 flex items-center">
+                      <input
+                        type="checkbox"
+                        aria-label="task-checked"
+                        class="size-4.5 accent-black"
+                      />
+                    </div>
 
-                      <div>
-                        <!-- will be crossed out with one line -->
-                        <span>Example Task 4</span>
-                        <div>
-                          <div>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke-width="1.5"
-                              stroke="currentColor"
-                              class="w-2 h-2"
-                              aria-hidden="true"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
-                              />
-                            </svg>
-                            <span>Nov 28</span>
-                          </div>
-
-                          <span>Medium</span>
+                    <div class="flex flex-1 flex-col gap-1">
+                      <h3 class="task-title task-title-completed">
+                        Setup CI/CD pipeline configuration
+                      </h3>
+                      <div class="task-detail">
+                        <div class="date-task date-task-completed">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-2 h-2"
+                            aria-hidden="true"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
+                            />
+                          </svg>
+                          <div>Nov 28</div>
                         </div>
-                      </div>
 
-                      <div>
-                        <button type="button" aria-label="Edit">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="w-4 h-4"
-                            aria-hidden="true"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
-                            />
-                          </svg>
-                        </button>
-                        <button type="button" aria-label="Delete">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="w-4 h-4"
-                            aria-hidden="true"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              d="M6 18 18 6M6 6l12 12"
-                            />
-                          </svg>
-                        </button>
+                        <p class="task-category-low">Low</p>
                       </div>
+                    </div>
+
+                    <div class="shrink-0 flex items-center gap-1">
+                      <button
+                        type="button"
+                        aria-label="Edit"
+                        class="edit-task-btn"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="size-3"
+                          aria-hidden="true"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"
+                          />
+                        </svg>
+                      </button>
+                      <button
+                        type="button"
+                        aria-label="Delete"
+                        class="delete-task-btn"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="size-3"
+                          aria-hidden="true"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6 18 18 6M6 6l12 12"
+                          />
+                        </svg>
+                      </button>
                     </div>
                   </li>
                 </ul>
